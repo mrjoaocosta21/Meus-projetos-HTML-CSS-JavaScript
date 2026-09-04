@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora Científica</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Roboto+Mono:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="calc">
+      <header class="calc__header">
+        <p class="calc__eyebrow">Calculadora científica</p>
+        <h1 class="calc__brand">EULER</h1>
+      </header>
+
+      <div class="status-row">
+        <span class="status-tag" id="secondTag">2ND</span>
+        <span class="status-tag" id="memoryTag">M</span>
+        <span class="status-tag status-tag--mode" id="angleTag">DEG</span>
+      </div>
+
+      <div class="display">
+        <input type="text" id="display" disabled aria-label="Visor da calculadora" />
+      </div>
+
+      <div class="buttons">
+        <!-- modos -->
+        <button id="secondBtn" class="fn fn--toggle" onclick="toggleSecondMode()">2nd</button>
+        <button id="angleModeBtn" class="fn fn--toggle" onclick="toggleAngleMode()">DEG</button>
+        <button class="fn" onclick="appendSmart('π')">π</button>
+        <button class="fn" onclick="appendSmart('e')">e</button>
+
+        <!-- memória -->
+        <button class="fn" onclick="memoryClear()">MC</button>
+        <button class="fn" onclick="memoryRecall()">MR</button>
+        <button class="fn" onclick="memoryAdd()">M+</button>
+        <button class="fn" onclick="memorySubtract()">M-</button>
+
+        <!-- trigonometria -->
+        <button id="sinBtn" class="fn" onclick="handleFunctionKey('sin')">sin</button>
+        <button id="cosBtn" class="fn" onclick="handleFunctionKey('cos')">cos</button>
+        <button id="tanBtn" class="fn" onclick="handleFunctionKey('tan')">tan</button>
+        <button class="fn" onclick="appendValue('^')">xʸ</button>
+
+        <!-- raiz, potência, log, ln -->
+        <button class="fn" onclick="appendSmart('√(')">√</button>
+        <button class="fn" onclick="appendValue('^2')">x²</button>
+        <button id="logBtn" class="fn" onclick="handleFunctionKey('log')">log</button>
+        <button id="lnBtn" class="fn" onclick="handleFunctionKey('ln')">ln</button>
+
+        <!-- parênteses, fatorial, porcentagem -->
+        <button class="fn" onclick="appendSmart('(')">(</button>
+        <button class="fn" onclick="appendValue(')')">)</button>
+        <button class="fn" onclick="appendValue('!')">x!</button>
+        <button class="fn" onclick="appendValue('%')">%</button>
+
+        <!-- básico -->
+        <button class="ac" onclick="clearDisplay()">AC</button>
+        <button class="del" onclick="deleteLast()">DEL</button>
+        <button class="op" onclick="appendValue('÷')">÷</button>
+        <button class="op" onclick="appendValue('×')">×</button>
+
+        <button onclick="appendValue('7')">7</button>
+        <button onclick="appendValue('8')">8</button>
+        <button onclick="appendValue('9')">9</button>
+        <button class="op" onclick="appendValue('-')">-</button>
+
+        <button onclick="appendValue('4')">4</button>
+        <button onclick="appendValue('5')">5</button>
+        <button onclick="appendValue('6')">6</button>
+        <button class="op" onclick="appendValue('+')">+</button>
+
+        <button onclick="appendValue('1')">1</button>
+        <button onclick="appendValue('2')">2</button>
+        <button onclick="appendValue('3')">3</button>
+        <button class="fn ans" onclick="insertAns()">ANS</button>
+
+        <button class="zero" onclick="appendValue('0')">0</button>
+        <button onclick="appendValue('.')">.</button>
+        <button class="eq" onclick="calculate()">=</button>
+      </div>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

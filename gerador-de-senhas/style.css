@@ -1,0 +1,315 @@
+:root {
+  --bg-page: #0d1210;
+  --panel: #161d1a;
+  --panel-raised: #1e2622;
+  --accent-gold: #d4a24c;
+  --accent-gold-dim: #a17e3c;
+  --accent-green: #4caf7d;
+  --accent-amber: #e0a940;
+  --accent-red: #e2564c;
+  --text-primary: #ece7dc;
+  --text-muted: #8b948d;
+  --radius-lg: 28px;
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: radial-gradient(900px 700px at 50% -10%, #17201c 0%, var(--bg-page) 60%);
+  font-family: var(--font-body);
+}
+
+.vault {
+  width: 100%;
+  max-width: 360px;
+  background: linear-gradient(165deg, var(--panel) 0%, #0f1512 100%);
+  border: 1px solid rgba(212, 162, 76, 0.15);
+  border-radius: var(--radius-lg);
+  padding: 30px 26px 26px;
+  box-shadow: 0 30px 70px -24px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  text-align: center;
+}
+
+.vault__header {
+  margin-bottom: 18px;
+}
+
+.vault__eyebrow {
+  margin: 0;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.vault__brand {
+  margin: 6px 0 0;
+  font-family: var(--font-display);
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--text-primary);
+}
+
+/* Cadeado */
+#lock {
+  width: 34px;
+  height: 34px;
+  margin: 2px auto 12px;
+  display: block;
+  color: var(--text-muted);
+  transition: color 0.3s ease;
+}
+#lock rect {
+  fill: currentColor;
+  opacity: 0.9;
+}
+#lockShackle {
+  transform-origin: 16px 11px;
+  transition: transform 0.35s ease;
+}
+#lock.is-unlocked {
+  color: var(--accent-gold);
+}
+#lock.is-unlocked #lockShackle {
+  transform: translateY(-3px) rotate(-18deg);
+}
+
+/* Campo de senha */
+.password-box {
+  position: relative;
+  margin-bottom: 12px;
+}
+
+.password-box input {
+  width: 100%;
+  height: 52px;
+  background: var(--panel-raised);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 1.02rem;
+  letter-spacing: 1.4px;
+  padding: 0 84px 0 16px;
+}
+
+.password-box input::placeholder {
+  font-family: var(--font-body);
+  color: var(--text-muted);
+  letter-spacing: normal;
+  font-size: 0.85rem;
+}
+
+.password-box input:focus-visible {
+  outline: 2px solid var(--accent-gold);
+  outline-offset: 2px;
+}
+
+.copy-btn {
+  position: absolute;
+  right: 6px;
+  top: 6px;
+  bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0 12px;
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  color: var(--text-muted);
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.copy-btn svg {
+  width: 15px;
+  height: 15px;
+  fill: currentColor;
+}
+
+.copy-btn:hover:not(:disabled) {
+  background: rgba(212, 162, 76, 0.12);
+  color: var(--accent-gold);
+}
+.copy-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+.copy-btn:focus-visible {
+  outline: 2px solid var(--accent-gold);
+  outline-offset: 2px;
+}
+
+/* Força da senha */
+.strength {
+  margin-bottom: 20px;
+}
+
+.strength__bar {
+  height: 5px;
+  border-radius: 3px;
+  background: var(--panel-raised);
+  overflow: hidden;
+}
+
+.strength__bar span {
+  display: block;
+  height: 100%;
+  width: 0%;
+  border-radius: 3px;
+  background: var(--accent-red);
+  transition: width 0.25s ease, background-color 0.25s ease;
+}
+.strength__bar span[data-level="2"] {
+  background: var(--accent-amber);
+}
+.strength__bar span[data-level="3"] {
+  background: var(--accent-gold);
+}
+.strength__bar span[data-level="4"] {
+  background: var(--accent-green);
+}
+
+.strength__label {
+  margin: 6px 0 0;
+  font-size: 11px;
+  color: var(--text-muted);
+  min-height: 14px;
+}
+
+/* Configurações */
+.settings {
+  text-align: left;
+  margin-bottom: 18px;
+}
+
+.length-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 6px;
+}
+
+.length-row label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.length-value {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--accent-gold);
+}
+
+input[type="range"] {
+  width: 100%;
+  margin: 4px 0 18px;
+  accent-color: var(--accent-gold);
+}
+
+.options {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+}
+
+.options .option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 50%;
+  margin-bottom: 10px;
+}
+
+.options .option input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  accent-color: var(--accent-gold);
+}
+
+.options .option label {
+  font-size: 12.5px;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+/* Botão gerar */
+.generate-btn {
+  width: 100%;
+  padding: 14px 0;
+  background: var(--accent-gold);
+  color: #1a1510;
+  border: none;
+  border-radius: 12px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition: background-color 0.15s ease, transform 0.12s ease;
+}
+.generate-btn:hover {
+  background: #e2b466;
+}
+.generate-btn:active {
+  transform: scale(0.98);
+}
+.generate-btn:focus-visible {
+  outline: 2px solid var(--text-primary);
+  outline-offset: 2px;
+}
+
+/* Status */
+.status {
+  margin: 12px 0 0;
+  font-size: 11.5px;
+  color: var(--text-muted);
+  min-height: 14px;
+}
+
+@media (max-width: 340px) {
+  .vault {
+    padding: 24px 18px 20px;
+  }
+  .options .option {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #lock,
+  #lockShackle,
+  .strength__bar span,
+  .generate-btn {
+    transition: none;
+  }
+}

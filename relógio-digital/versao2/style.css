@@ -1,0 +1,184 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root {
+    --bg: #0b0f14;
+    --card-bg: #111820;
+    --accent: #00ff66;
+    --accent-soft: rgba(0, 255, 102, 0.2);
+    --text-muted: #7fa88f;
+    --border: rgba(0, 255, 102, 0.15);
+}
+
+[data-theme="light"] {
+    --bg: #eef3ee;
+    --card-bg: #ffffff;
+    --accent: #0a8f4a;
+    --accent-soft: rgba(10, 143, 74, 0.15);
+    --text-muted: #4d6b5a;
+    --border: rgba(10, 143, 74, 0.2);
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg);
+    transition: background 0.3s ease;
+    padding: 20px;
+}
+
+.clock-card {
+    position: relative;
+    background: var(--card-bg);
+    padding: 32px 48px 28px;
+    border-radius: 16px;
+    box-shadow: 0 0 25px var(--accent-soft);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    max-width: 420px;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.icon-btn {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.icon-btn:hover {
+    transform: scale(1.08);
+    background: var(--accent-soft);
+}
+
+.clock {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+#time {
+    font-size: clamp(32px, 9vw, 56px);
+    color: var(--accent);
+    font-weight: 600;
+    letter-spacing: 2px;
+    font-variant-numeric: tabular-nums;
+    animation: glow-pulse 2.4s ease-in-out infinite;
+}
+
+#ampm {
+    font-size: clamp(14px, 4vw, 20px);
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.date {
+    font-size: clamp(13px, 3.2vw, 16px);
+    color: var(--text-muted);
+    text-transform: capitalize;
+    text-align: center;
+}
+
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 6px;
+    width: 100%;
+}
+
+.pill-btn {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    padding: 8px 16px;
+    border-radius: 999px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.pill-btn:hover {
+    background: var(--accent-soft);
+    color: var(--accent);
+}
+
+.pill-btn strong {
+    color: var(--accent);
+}
+
+.timezone-label {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 11px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+#timezone-select {
+    background: var(--bg);
+    color: var(--accent);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-size: 13px;
+    cursor: pointer;
+    max-width: 220px;
+}
+
+@keyframes glow-pulse {
+    0%, 100% {
+        text-shadow: 0 0 6px var(--accent-soft);
+    }
+    50% {
+        text-shadow: 0 0 18px var(--accent), 0 0 30px var(--accent-soft);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #time {
+        animation: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .clock-card {
+        padding: 26px 22px 22px;
+    }
+
+    .clock {
+        gap: 10px;
+    }
+
+    .controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    #timezone-select {
+        max-width: 100%;
+    }
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fita — Gravador de Voz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Manrope:wght@400;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="deck">
+      <header class="deck__header">
+        <p class="deck__eyebrow">Gravação analógica</p>
+        <h1 class="deck__brand">FITA</h1>
+        <p class="deck__subtitle">Gravador de voz</p>
+      </header>
+
+      <section class="deck__panel">
+        <div class="reels" id="reels" aria-hidden="true">
+          <div class="reel"><span class="reel__hub"></span></div>
+          <div class="thread"></div>
+          <div class="reel"><span class="reel__hub"></span></div>
+        </div>
+        <div class="meter" id="meter" aria-hidden="true"></div>
+      </section>
+
+      <p class="timer" id="timer">00:00</p>
+
+      <div class="controls" role="group" aria-label="Controles de gravação">
+        <button id="record" class="btn btn--record" type="button">
+          <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="8" />
+          </svg>
+          <span>Gravar</span>
+        </button>
+
+        <button id="stop" class="btn btn--stop" type="button" disabled>
+          <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="6" y="6" width="12" height="12" rx="1.5" />
+          </svg>
+          <span>Parar</span>
+        </button>
+
+        <button id="play" class="btn btn--play" type="button" disabled>
+          <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M8 5l11 7-11 7V5z" />
+          </svg>
+          <span>Reproduzir</span>
+        </button>
+
+        <a
+          id="download"
+          class="btn btn--download is-disabled"
+          href="#"
+          aria-disabled="true"
+        >
+          <svg class="btn__icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 3v11.5M7 10l5 5 5-5M5 19h14" />
+          </svg>
+          <span>Baixar</span>
+        </a>
+      </div>
+
+      <p class="status" id="status" role="status" aria-live="polite">
+        Pronto para gravar
+      </p>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

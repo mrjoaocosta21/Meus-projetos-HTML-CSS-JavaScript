@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cofre — Gerador de Senha</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=IBM+Plex+Mono:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="vault">
+      <header class="vault__header">
+        <p class="vault__eyebrow">Gerador de senha</p>
+        <h1 class="vault__brand">COFRE</h1>
+      </header>
+
+      <section class="vault__display">
+        <svg id="lock" viewBox="0 0 24 24">
+          <rect x="4" y="11" width="16" height="10" rx="2" />
+          <path
+            id="lockShackle"
+            d="M8 11V7a4 4 0 018 0v4"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+        </svg>
+
+        <div class="password-box">
+          <input
+            id="password"
+            type="text"
+            readonly
+            placeholder="Clique em gerar"
+            aria-label="Senha gerada"
+          />
+          <button id="copy" class="copy-btn" type="button" disabled aria-label="Copiar senha">
+            <svg viewBox="0 0 24 24"><path d="M9 9h10v10H9zM5 5h10v2H7v8H5z" /></svg>
+            <span id="copyLabel">Copiar</span>
+          </button>
+        </div>
+
+        <div class="strength">
+          <div class="strength__bar"><span id="strengthFill"></span></div>
+          <p class="strength__label" id="strengthLabel">&nbsp;</p>
+        </div>
+      </section>
+
+      <section class="settings">
+        <div class="length-row">
+          <label for="length">Tamanho</label>
+          <span class="length-value" id="lengthValue">12</span>
+        </div>
+        <input type="range" id="length" min="4" max="32" value="12" />
+
+        <ul class="options">
+          <li class="option">
+            <input checked id="lowercase" type="checkbox" />
+            <label for="lowercase">Letras minúsculas (a-z)</label>
+          </li>
+          <li class="option">
+            <input checked id="uppercase" type="checkbox" />
+            <label for="uppercase">Letras maiúsculas (A-Z)</label>
+          </li>
+          <li class="option">
+            <input checked id="numbers" type="checkbox" />
+            <label for="numbers">Números (0-9)</label>
+          </li>
+          <li class="option">
+            <input checked id="symbols" type="checkbox" />
+            <label for="symbols">Símbolos (!-$^+)</label>
+          </li>
+          <li class="option">
+            <input checked id="exc-duplicate" type="checkbox" />
+            <label for="exc-duplicate">Excluir duplicatas</label>
+          </li>
+          <li class="option">
+            <input checked id="spaces" type="checkbox" />
+            <label for="spaces">Incluir espaços</label>
+          </li>
+        </ul>
+      </section>
+
+      <button class="generate-btn" id="generate" type="button">Gerar senha</button>
+      <p class="status" id="status" role="status" aria-live="polite">&nbsp;</p>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

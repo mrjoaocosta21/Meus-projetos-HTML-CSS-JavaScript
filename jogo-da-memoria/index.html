@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Jogo da Memória com frutas, pontuação, tempo e animações.">
+  <title>Memory Match — Jogo da Memória</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main class="game-container">
+    <header class="game-header">
+      <div>
+        <p class="eyebrow">MEMORY MATCH</p>
+        <h1>Jogo da Memória</h1>
+        <p class="subtitle">Encontre todos os pares de frutas.</p>
+      </div>
+
+      <button class="restart-button" id="restartBtn" type="button" aria-label="Reiniciar jogo">
+        <span aria-hidden="true">↻</span>
+        Reiniciar
+      </button>
+    </header>
+
+    <section class="status-bar" aria-label="Status da partida">
+      <div class="stat">
+        <span class="stat-label">Movimentos</span>
+        <strong id="moves">0</strong>
+      </div>
+
+      <div class="stat">
+        <span class="stat-label">Tempo</span>
+        <strong id="timer">00:00</strong>
+      </div>
+
+      <div class="stat">
+        <span class="stat-label">Pares</span>
+        <strong><span id="matchedPairs">0</span>/8</strong>
+      </div>
+
+      <div class="stat score-stat">
+        <span class="stat-label">Pontuação</span>
+        <strong id="score">1000</strong>
+      </div>
+    </section>
+
+    <section class="game-area">
+      <div
+        class="game-board"
+        id="gameBoard"
+        role="grid"
+        aria-label="Tabuleiro do jogo da memória"
+      ></div>
+    </section>
+
+    <p class="game-tip">Clique em duas cartas para encontrar um par.</p>
+
+    <section class="win-message" id="winMessage" aria-live="polite" hidden>
+      <div class="win-icon" aria-hidden="true">🏆</div>
+      <p class="eyebrow">PARTIDA CONCLUÍDA</p>
+      <h2>Você venceu!</h2>
+      <p id="finalScore"></p>
+
+      <div class="result-grid">
+        <div>
+          <span>Movimentos</span>
+          <strong id="finalMoves">0</strong>
+        </div>
+        <div>
+          <span>Tempo</span>
+          <strong id="finalTime">00:00</strong>
+        </div>
+      </div>
+
+      <button class="play-again-button" id="playAgainBtn" type="button">
+        Jogar novamente
+      </button>
+    </section>
+  </main>
+
+  <script src="./script.js"></script>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Aplicação de previsão do tempo com dados da OpenWeatherMap."
+  >
+
+  <title>Weather App</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+
+  <main class="container">
+
+    <section class="weather-card" aria-label="Aplicativo de previsão do tempo">
+
+      <header class="header">
+        <div class="brand">
+          <span class="brand-icon">☁️</span>
+
+          <div>
+            <h1>Weather App</h1>
+            <p>Consulte o clima da sua cidade</p>
+          </div>
+        </div>
+      </header>
+
+      <form class="search-box" id="searchForm">
+
+        <div class="input-wrapper">
+          <span class="search-icon" aria-hidden="true">⌕</span>
+
+          <input
+            type="text"
+            id="city"
+            name="city"
+            placeholder="Digite uma cidade..."
+            autocomplete="off"
+            aria-label="Nome da cidade"
+            required
+          >
+        </div>
+
+        <button
+          type="submit"
+          id="searchBtn"
+          aria-label="Pesquisar clima"
+        >
+          <span class="button-text">Pesquisar</span>
+          <span class="loader" aria-hidden="true"></span>
+        </button>
+
+      </form>
+
+      <div
+        class="status-message"
+        id="statusMessage"
+        role="status"
+        aria-live="polite"
+      ></div>
+
+      <section
+        class="weather-box"
+        id="weatherBox"
+        aria-live="polite"
+      >
+
+        <div class="weather-main">
+
+          <div class="location">
+            <span class="location-pin" aria-hidden="true">📍</span>
+            <h2 id="cityName">Sua cidade</h2>
+          </div>
+
+          <img
+            id="icon"
+            class="weather-icon"
+            src=""
+            alt=""
+          >
+
+          <div class="temperature">
+            <span id="temp">--</span>
+            <span class="degree">°C</span>
+          </div>
+
+          <p id="desc" class="description">
+            Pesquise uma cidade para consultar o clima
+          </p>
+
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="info">
+
+          <div class="info-item">
+            <div class="info-icon">💧</div>
+
+            <div>
+              <span id="humidity">--%</span>
+              <p>Umidade</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">💨</div>
+
+            <div>
+              <span id="wind">-- km/h</span>
+              <p>Vento</p>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+      <footer class="footer">
+        <span>Dados meteorológicos fornecidos pela OpenWeatherMap</span>
+      </footer>
+
+    </section>
+
+  </main>
+
+  <script src="./script.js"></script>
+
+</body>
+</html>
+

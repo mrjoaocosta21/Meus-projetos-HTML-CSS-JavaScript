@@ -1,0 +1,646 @@
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+
+  font-family: "Inter", sans-serif;
+
+  color: #ffffff;
+
+  background:
+    radial-gradient(
+      circle at 15% 20%,
+      rgba(255, 255, 255, 0.22),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 85% 80%,
+      rgba(255, 255, 255, 0.18),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      #43d8c5 0%,
+      #5c9ee8 52%,
+      #8176d9 100%
+    );
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 24px;
+
+  overflow-x: hidden;
+}
+
+
+/* =========================================================
+   MAIN CONTAINER
+========================================================= */
+
+.container {
+  width: min(100%, 480px);
+
+  display: flex;
+  justify-content: center;
+}
+
+
+/* =========================================================
+   WEATHER CARD
+========================================================= */
+
+.weather-card {
+  width: 100%;
+
+  padding: clamp(24px, 5vw, 38px);
+
+  border: 1px solid rgba(255, 255, 255, 0.28);
+
+  border-radius: 32px;
+
+  background: rgba(255, 255, 255, 0.14);
+
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+
+  box-shadow:
+    0 25px 70px rgba(20, 50, 90, 0.20),
+    inset 0 1px 1px rgba(255, 255, 255, 0.22);
+
+  animation: cardAppear 0.7s ease both;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header {
+  margin-bottom: 28px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.brand-icon {
+  width: 52px;
+  height: 52px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 16px;
+
+  background: rgba(255, 255, 255, 0.18);
+
+  font-size: 25px;
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.2);
+}
+
+.brand h1 {
+  font-size: clamp(1.35rem, 4vw, 1.65rem);
+  font-weight: 800;
+
+  letter-spacing: -0.04em;
+}
+
+.brand p {
+  margin-top: 3px;
+
+  font-size: 0.78rem;
+
+  color: rgba(255, 255, 255, 0.72);
+}
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+.search-box {
+  display: flex;
+
+  gap: 10px;
+
+  margin-bottom: 18px;
+}
+
+.input-wrapper {
+  position: relative;
+
+  flex: 1;
+
+  min-width: 0;
+}
+
+.search-icon {
+  position: absolute;
+
+  left: 15px;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  color: rgba(255, 255, 255, 0.72);
+
+  font-size: 23px;
+
+  pointer-events: none;
+}
+
+.search-box input {
+  width: 100%;
+
+  height: 48px;
+
+  padding: 0 16px 0 43px;
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+
+  border-radius: 15px;
+
+  outline: none;
+
+  background: rgba(255, 255, 255, 0.14);
+
+  color: #ffffff;
+
+  font-family: inherit;
+
+  font-size: 0.9rem;
+
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.search-box input::placeholder {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.search-box input:focus {
+  border-color: rgba(255, 255, 255, 0.55);
+
+  background: rgba(255, 255, 255, 0.19);
+
+  box-shadow:
+    0 0 0 4px rgba(255, 255, 255, 0.08);
+}
+
+
+/* =========================================================
+   BUTTON
+========================================================= */
+
+.search-box button {
+  height: 48px;
+
+  padding: 0 19px;
+
+  border: none;
+
+  border-radius: 15px;
+
+  background: #ffffff;
+
+  color: #3979b7;
+
+  font-family: inherit;
+
+  font-size: 0.84rem;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+
+  white-space: nowrap;
+}
+
+.search-box button:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.14);
+}
+
+.search-box button:active {
+  transform: translateY(0);
+}
+
+.search-box button:disabled {
+  cursor: wait;
+
+  opacity: 0.75;
+
+  transform: none;
+}
+
+
+/* =========================================================
+   LOADER
+========================================================= */
+
+.loader {
+  display: none;
+
+  width: 17px;
+  height: 17px;
+
+  border: 2px solid rgba(57, 121, 183, 0.25);
+
+  border-top-color: #3979b7;
+
+  border-radius: 50%;
+
+  animation: spin 0.7s linear infinite;
+}
+
+.search-box button.loading .button-text {
+  display: none;
+}
+
+.search-box button.loading .loader {
+  display: inline-block;
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.status-message {
+  min-height: 20px;
+
+  margin-bottom: 8px;
+
+  text-align: center;
+
+  font-size: 0.78rem;
+
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.status-message.error {
+  color: #ffe1e1;
+}
+
+.status-message.success {
+  color: #e1fff5;
+}
+
+
+/* =========================================================
+   WEATHER
+========================================================= */
+
+.weather-box {
+  padding: 26px 20px 20px;
+
+  text-align: center;
+
+  border-radius: 24px;
+
+  background: rgba(255, 255, 255, 0.09);
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease;
+}
+
+.weather-box:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+
+/* =========================================================
+   LOCATION
+========================================================= */
+
+.location {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 6px;
+}
+
+.location-pin {
+  font-size: 14px;
+}
+
+.location h2 {
+  font-size: clamp(1.15rem, 4vw, 1.35rem);
+
+  font-weight: 700;
+
+  letter-spacing: -0.02em;
+}
+
+
+/* =========================================================
+   WEATHER ICON
+========================================================= */
+
+.weather-icon {
+  display: block;
+
+  width: 105px;
+  height: 105px;
+
+  margin: 5px auto -4px;
+
+  object-fit: contain;
+
+  filter:
+    drop-shadow(0 10px 15px rgba(0, 0, 0, 0.12));
+
+  animation: iconFloat 3s ease-in-out infinite;
+}
+
+
+/* =========================================================
+   TEMPERATURE
+========================================================= */
+
+.temperature {
+  display: flex;
+
+  align-items: flex-start;
+  justify-content: center;
+
+  line-height: 1;
+}
+
+#temp {
+  font-size: clamp(4rem, 15vw, 5.3rem);
+
+  font-weight: 800;
+
+  letter-spacing: -0.08em;
+
+  text-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.degree {
+  margin-top: 7px;
+
+  font-size: 1.7rem;
+
+  font-weight: 600;
+
+  opacity: 0.8;
+}
+
+.description {
+  margin-top: 9px;
+
+  font-size: 0.95rem;
+
+  font-weight: 500;
+
+  text-transform: capitalize;
+
+  color: rgba(255, 255, 255, 0.82);
+}
+
+
+/* =========================================================
+   DIVIDER
+========================================================= */
+
+.divider {
+  width: 100%;
+  height: 1px;
+
+  margin: 24px 0;
+
+  background: rgba(255, 255, 255, 0.13);
+}
+
+
+/* =========================================================
+   WEATHER INFO
+========================================================= */
+
+.info {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 12px;
+}
+
+.info-item {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  min-width: 0;
+
+  padding: 13px 8px;
+
+  border-radius: 16px;
+
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.info-icon {
+  font-size: 20px;
+}
+
+.info-item > div:last-child {
+  text-align: left;
+}
+
+.info-item span {
+  display: block;
+
+  font-size: 0.98rem;
+
+  font-weight: 700;
+}
+
+.info-item p {
+  margin-top: 2px;
+
+  font-size: 0.68rem;
+
+  color: rgba(255, 255, 255, 0.62);
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+  margin-top: 22px;
+
+  text-align: center;
+
+  font-size: 0.62rem;
+
+  line-height: 1.5;
+
+  color: rgba(255, 255, 255, 0.48);
+}
+
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes cardAppear {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes iconFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 520px) {
+
+  body {
+    padding: 15px;
+  }
+
+  .weather-card {
+    border-radius: 26px;
+
+    padding: 22px 18px;
+  }
+
+  .header {
+    margin-bottom: 22px;
+  }
+
+  .brand-icon {
+    width: 46px;
+    height: 46px;
+
+    border-radius: 14px;
+  }
+
+  .search-box {
+    gap: 8px;
+  }
+
+  .search-box button {
+    padding: 0 15px;
+  }
+
+  .weather-box {
+    padding: 22px 14px 16px;
+  }
+
+  .weather-icon {
+    width: 95px;
+    height: 95px;
+  }
+
+  .info {
+    gap: 8px;
+  }
+
+  .info-item {
+    padding: 12px 5px;
+  }
+}
+
+
+@media (max-width: 380px) {
+
+  .search-box {
+    flex-direction: column;
+  }
+
+  .search-box button {
+    width: 100%;
+  }
+
+  .info-item {
+    gap: 6px;
+  }
+
+  .info-icon {
+    font-size: 17px;
+  }
+
+  .info-item span {
+    font-size: 0.9rem;
+  }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+
+    scroll-behavior: auto !important;
+  }
+}
+
