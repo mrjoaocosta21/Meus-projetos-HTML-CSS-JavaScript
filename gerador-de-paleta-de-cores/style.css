@@ -1,0 +1,158 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f4f4f5;
+  color: #18181b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: min(1200px, 92%);
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.header {
+  margin-bottom: 35px;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.header p {
+  color: #71717a;
+  font-size: 1rem;
+}
+
+.palette {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 15px;
+  margin-bottom: 35px;
+}
+
+.color-card {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.color-preview {
+  height: 250px;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: 12px;
+}
+
+.lock-btn {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+  font-size: 18px;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.lock-btn:hover {
+  transform: scale(1.1);
+  background: #fff;
+}
+
+.color-info {
+  padding: 18px 15px;
+}
+
+.hex-code {
+  font-size: 1rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+
+.copy-btn {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background: #18181b;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+
+.copy-btn:hover {
+  background: #3f3f46;
+}
+
+.generate-btn {
+  border: none;
+  background: #18181b;
+  color: #fff;
+  padding: 14px 28px;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.generate-btn:hover {
+  background: #3f3f46;
+  transform: translateY(-2px);
+}
+
+.hint {
+  margin-top: 15px;
+  color: #71717a;
+  font-size: 0.85rem;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .palette {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .color-preview {
+    height: 200px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  body {
+    align-items: flex-start;
+  }
+
+  .container {
+    padding: 30px 10px;
+  }
+
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .palette {
+    grid-template-columns: 1fr;
+  }
+
+  .color-preview {
+    height: 180px;
+  }
+}
