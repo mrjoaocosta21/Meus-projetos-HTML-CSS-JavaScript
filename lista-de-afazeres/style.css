@@ -1,0 +1,263 @@
+:root {
+  --primary: #0969DA;
+  --violet: #a278e6;
+  --orange: #ffa94d;
+  --green: #4be0bb;
+  --yellow: #FFD700;
+  --blue-light: #56a5ff;
+  --red: #ff5e94;
+  --primary-light: #0969DA20;
+  --bg: #f8f8f6;
+  --bg-column: #f4f4f2;
+  --bg-blue: #0969DA20;
+  --border: #f0f0f0;
+  --border-darker: #b2b2b2;
+  --gray: #EDEEF7;
+  --white: #fcfcfc;
+  --column-border: #E1E1E1;
+  --navbar-height: 60px;
+  --header-color: #6c6e6e;
+  --header-svg: #adadad;
+  --text: #3c3c3c;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  background: var(--bg);
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  width: 100vw;
+}
+
+.columns {
+  margin: 0 auto;
+  display: grid;
+  padding: 1rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  background: var(--white);
+  border-radius: 1rem;
+  max-width: 60rem;
+  width: 100%;
+  min-height: 40rem;
+}
+
+.column {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background: var(--white);
+  border-radius: 0.75rem;
+  border: 1px solid var(--column-border);
+}
+
+.column_header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--header-color);
+  margin-bottom: 0.5rem;
+}
+
+.column_header button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: var(--header-color);
+}
+
+.column_header svg {
+  stroke: var(--header-color);
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.column h2 {
+  font-size: 1.05rem;
+}
+
+#tasks--todo,
+#tasks--doing,
+#tasks--done {
+display: flex;
+flex-direction: column;
+gap: 0.5rem;
+padding: 0.5rem;
+border-radius: 0.65rem;
+height: 100%;
+min-width: 100%;
+background: var(--bg-column);
+}
+
+.task {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  color: var(--text);
+  padding: 1rem;
+  background: var(--white);
+  border: 1px solid var(--column-border);
+}
+
+.task header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.85rem;
+}
+
+.task footer {
+  display: flex;
+  font-size: 0.85rem;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.task .profile {
+  width: 2rem;
+  height: 2rem;
+  font-size: 0.75rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+}
+
+.task .profile img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--border-darker);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.tag--backend { background: var(--green); }
+.tag--frontend { background: var(--violet); }
+.tag--design { background: var(--orange); }
+.tag--research { background: var(--yellow); color: #333; }
+.tag--marketing { background: var(--blue-light); }
+.tag--devops { background: var(--red); }
+
+.task:hover {
+  cursor: grab;
+}
+
+.task--chosen {
+  border: 1px solid var(--primary);
+}
+
+.task
+
+/* --- Ações da Tarefa (Editar e Excluir) --- */
+.task header {
+  justify-content: space-between;
+}
+
+.task-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-edit,
+.btn-delete {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: var(--header-svg);
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-edit:hover {
+  color: var(--primary);
+  transform: scale(1.15);
+}
+
+.btn-delete {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.btn-delete:hover {
+  color: var(--red);
+  transform: scale(1.15);
+}
+/* --- Interatividade e Estilos das Tags --- */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tag {
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  user-select: none;
+}
+
+.tag:hover {
+  transform: scale(1.08);
+  opacity: 0.9;
+}
+
+/* Botão de Adicionar Tag */
+.btn-add-tag {
+  background: rgba(0, 0, 0, 0.06);
+  border: 1px dashed var(--border-darker);
+  color: var(--text);
+  padding: 0.15rem 0.45rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.btn-add-tag:hover {
+  background: rgba(0, 0, 0, 0.15);
+  transform: scale(1.1);
+}
+/* Efeito de hover na data para indicar interatividade */
+.task-date {
+  cursor: pointer;
+  transition: color 0.2s ease, text-decoration 0.2s ease;
+  user-select: none;
+}
+
+.task-date:hover {
+  color: var(--primary);
+  text-decoration: underline;
+}

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <div class="columns">
+      <!-- Coluna: To Do -->
+      <div class="column">
+        <div class="column_header">
+          <h2>To do</h2>
+          <div class="column_actions">
+            <button type="button" class="add-task-btn" data-column="tasks--todo" title="Adicionar tarefa">+</button>
+          </div>
+        </div>
+        <div id="tasks--todo">
+          <article class="task">
+            <header>
+              <h3>UI Updates</h3>
+              <div class="task-actions">
+                <button type="button" class="btn-edit" title="Editar"><i class="fa-solid fa-pen"></i></button>
+                <button type="button" class="btn-delete" title="Excluir">&times;</button>
+              </div>
+            </header>
+            <div class="tags">
+              <div class="tag tag--frontend">Frontend</div>
+              <div class="tag tag--design">Design</div>
+              <button type="button" class="btn-add-tag" title="Adicionar Tag">+</button>
+            </div>
+            <footer>
+              <div class="profile profile--jm">
+                <img src="https://i.pravatar.cc/100?img=12" alt="Perfil">
+              </div>
+              <span class="task-date" title="Clique para editar a data">Today - Jan 11</span>
+            </footer>
+          </article>
+        </div>
+      </div>
+
+      <!-- Coluna: Doing -->
+      <div class="column">
+        <div class="column_header">
+          <h2>Doing</h2>
+          <div class="column_actions">
+            <button type="button" class="add-task-btn" data-column="tasks--doing" title="Adicionar tarefa">+</button>
+          </div>
+        </div>
+        <div id="tasks--doing">
+          <article class="task">
+            <header>
+              <h3>API Integration</h3>
+              <div class="task-actions">
+                <button type="button" class="btn-edit" title="Editar"><i class="fa-solid fa-pen"></i></button>
+                <button type="button" class="btn-delete" title="Excluir">&times;</button>
+              </div>
+            </header>
+            <div class="tags">
+              <div class="tag tag--backend">Backend</div>
+              <button type="button" class="btn-add-tag" title="Adicionar Tag">+</button>
+            </div>
+            <footer>
+              <div class="profile profile--km">
+                <img src="https://i.pravatar.cc/100?img=5" alt="Perfil">
+              </div>
+              <span class="task-date" title="Clique para editar a data">Today - Jan 11</span>
+            </footer>
+          </article>
+        </div>
+      </div>
+
+      <!-- Coluna: Done -->
+      <div class="column">
+        <div class="column_header">
+          <h2>Done</h2>
+          <div class="column_actions">
+            <button type="button" class="add-task-btn" data-column="tasks--done" title="Adicionar tarefa">+</button>
+          </div>
+        </div>
+        <div id="tasks--done"></div>
+      </div>
+    </div>
+
+    <!-- Biblioteca SortableJS -->
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
